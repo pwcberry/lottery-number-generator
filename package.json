@@ -1,0 +1,28 @@
+{
+  "name": "lottery-number-generator",
+  "version": "0.0.1",
+  "description": "Generate a sequence of lottery games from a select set of numbers.",
+  "main": "index.js",
+  "scripts": {
+    "publish": "node scripts/publish.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pwcberry/lottery-number-generator.git"
+  },
+  "keywords": [
+    "vue",
+    "lottery",
+    "generator"
+  ],
+  "author": "Peter Berry <nerd@travelsincode.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pwcberry/lottery-number-generator/issues"
+  },
+  "homepage": "https://github.com/pwcberry/lottery-number-generator#readme",
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  }
+}

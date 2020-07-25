@@ -20,6 +20,12 @@ npm start
 npm run build
 ```
 
+## Publish to Github
+
+```
+npm run publish
+```
+
 ## License
 
 MIT
