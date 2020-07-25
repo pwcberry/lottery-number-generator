@@ -4,7 +4,8 @@
   "description": "Generate a sequence of lottery games from a select set of numbers.",
   "main": "index.js",
   "scripts": {
-    "publish": "node scripts/publish.js",
+    "clean:gh-pages": "rm -rf node_modules/.cache/gh-pages",
+    "publish": "gh-pages -d src -m \"Prepare for publishing\" -s \"*.html\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
