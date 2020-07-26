@@ -3,6 +3,9 @@
     "ecmaVersion": 2019,
     "sourceType": "module"
   },
+  "globals": {
+    "Vue": true
+  },
   "env": {
     "browser": true
   },

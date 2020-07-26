@@ -13,14 +13,6 @@
     <p v-if="seen" style="background-color: maroon; color: gold; font-weight: bold">He he he he</p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script>
-    const app = new Vue({
-        el: "#App",
-        data: {
-            message: `G'day mate! Its: ${new Date().toLocaleString()}`,
-            seen: false
-        }
-    });
-</script>
+<script type="module" src="index.js"></script>
 </body>
 </html>
