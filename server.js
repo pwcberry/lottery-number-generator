@@ -1,10 +1,8 @@
-const fs = require("fs");
 const path = require("path");
-const http = require("http");
 const express = require("express");
 const connectLiveReload = require("connect-livereload");
 const liveReload = require("livereload");
-const { checkDistDir } = require("./scripts/utils");
+const { DIST_DIR, checkDistDir } = require("./scripts/utils");
 
 checkDistDir();
 
@@ -17,14 +15,14 @@ app.get("/index.css", (_, res) => {
     res.setHeader("content-type", "text/css");
     res.sendFile(path.resolve(DIST_DIR, "index.css"));
 });
-// app.get(/^\/app\/(\w+)\/(\w+\.js)$/, (req, res) => {
-//     res.setHeader("content-type", "application/javascript");
-//     res.sendFile(path.resolve(DIST_DIR, "app", req.params[1], req.params[2]));
-// });
-// app.get(/^\/app\/(\w+\.js)$/, (req, res) => {
-//     res.setHeader("content-type", "application/javascript");
-//     res.sendFile(path.resolve(DIST_DIR, "app", req.params[1]));
-// });
+app.get("/app/:feature/:name", (req, res) => {
+    res.setHeader("content-type", "application/javascript");
+    res.sendFile(path.resolve(DIST_DIR, "app", req.params.feature, req.params.name));
+});
+app.get("/app/:name", (req, res) => {
+    res.setHeader("content-type", "application/javascript");
+    res.sendFile(path.resolve(DIST_DIR, "app", req.params.name));
+});
 app.get("/app", (req, res) => {
     res.setHeader("content-type", "application/javascript");
     res.sendFile(path.resolve(DIST_DIR, req.path));
