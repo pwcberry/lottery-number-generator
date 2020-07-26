@@ -1,7 +1,7 @@
-const fs = require("fs");
-const pathLib = require("path");
-const sass = require("node-sass");
-const { DIST_DIR, SRC_DIR, checkDistDir } = require("./utils");
+import fs from "fs";
+import pathLib from "path";
+import sass from "node-sass";
+import { DIST_DIR, SRC_DIR, checkDistDir } from "./utils.js";
 
 checkDistDir();
 

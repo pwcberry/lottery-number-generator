@@ -1,10 +1,10 @@
-const fs = require("fs");
-const pathLib = require("path");
-const { DIST_DIR, SRC_DIR, checkDir, checkDistDir } = require("./utils");
+import fs from "fs";
+import pathLib from "path";
+import { DIST_DIR, SRC_DIR, checkDistDir, checkDir } from "./utils.js";
 
 checkDistDir();
 
-fs.copyFileSync(pathLib.resolve(__dirname, "../src/index.html"), pathLib.resolve(DIST_DIR, "index.html"));
+fs.copyFileSync(pathLib.join(SRC_DIR, "index.html"), pathLib.join(DIST_DIR, "index.html"));
 console.log("Wrote: dist/index.html");
 
 const reJs = /\w+\.js$/;

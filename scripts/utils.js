@@ -1,14 +1,20 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-const SRC_DIR = path.resolve(__dirname, "../src");
-const DIST_DIR = path.resolve(__dirname, "../dist");
+function getCurrentPath(moduleUrl) {
+    const fileUrl = new URL(moduleUrl);
+    const filePathname = fileUrl.pathname.replace(/^\/([A-Z]:)/, "$1");
+    return path.dirname(filePathname);
+}
 
-function checkDistDir() {
-    if (!fs.existsSync(DIST_DIR)) {
-        console.log("Creating \"dist\"...");
-        fs.mkdirSync(DIST_DIR);
-    }
+function getDistDir() {
+    const currentPath = getCurrentPath(import.meta.url);
+    return path.resolve(currentPath, "../dist");
+}
+
+function getSrcDir() {
+    const currentPath = getCurrentPath(import.meta.url);
+    return path.resolve(currentPath, "../src");
 }
 
 function checkDir(path) {
@@ -17,9 +23,15 @@ function checkDir(path) {
     }
 }
 
-module.exports = {
-    DIST_DIR,
-    SRC_DIR,
-    checkDir,
-    checkDistDir
+function checkDistDir() {
+    checkDir(getDistDir());
+}
+
+export const SRC_DIR = getSrcDir();
+export const DIST_DIR = getDistDir();
+
+export {
+    getCurrentPath,
+    checkDistDir,
+    checkDir
 };

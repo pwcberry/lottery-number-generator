@@ -1,8 +1,8 @@
-const path = require("path");
-const express = require("express");
-const connectLiveReload = require("connect-livereload");
-const liveReload = require("livereload");
-const { DIST_DIR, checkDistDir } = require("./scripts/utils");
+import path from "path";
+import express from "express";
+import connectLiveReload from "connect-livereload";
+import liveReload from "livereload";
+import { DIST_DIR, checkDistDir } from "./scripts/utils.js";
 
 checkDistDir();
 
