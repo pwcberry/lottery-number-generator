@@ -9,3 +9,5 @@ const app = new Vue({
 });
 
 App();
+
+console.log("Hello world");

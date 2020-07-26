@@ -4,13 +4,17 @@
   "description": "Generate a sequence of lottery games from a select set of numbers.",
   "main": "index.js",
   "scripts": {
-    "build": "npm run copy && npm run build:styles",
-    "build:styles": "node-sass --output-style compressed src/styles/index.scss > dist/index.css",
-    "lint": "npx eslint src --ext js  ",
+    "build": "npm run copy && npm run styles",
+    "dev": "npm run clean && concurrently \"npm:html:watch\" \"npm:js:watch\" \"npm:styles:watch\" \"npm:start\"",
     "clean": "rimraf dist",
     "clean:gh-pages": "rm -rf node_modules/.cache/gh-pages",
     "copy": "node scripts/copy.js",
+    "html:watch": "nodemon --watch src --ext html scripts/copy.js",
+    "js:watch": "nodemon --watch src --ext js scripts/copy.js",
+    "lint": "npx eslint src --ext js  ",
     "publish": "gh-pages -d dist -m \"Prepare for publishing\" -s \"*.html\"",
+    "styles": "node scripts/styles.js",
+    "styles:watch": "nodemon --watch src/styles --watch src/styles/components --ext scss scripts/styles.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
