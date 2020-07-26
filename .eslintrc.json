@@ -7,7 +7,9 @@
     "Vue": true
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "node": true,
+    "jest": true
   },
   "extends": "eslint:recommended"
 }
