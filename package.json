@@ -4,9 +4,14 @@
   "description": "Generate a sequence of lottery games from a select set of numbers.",
   "main": "index.js",
   "scripts": {
-    "build:styles": "node-sass --output-style compressed src/styles/index.scss > src/index.css",
+    "build": "npm run copy:html && npm run build:styles",
+    "build:styles": "node-sass --output-style compressed src/styles/index.scss > dist/index.css",
+    "lint": "npx eslint src --ext js  ",
+    "clean": "rimraf dist",
     "clean:gh-pages": "rm -rf node_modules/.cache/gh-pages",
-    "publish": "gh-pages -d src -m \"Prepare for publishing\" -s \"*.html\"",
+    "copy:html": "copyfiles --flat src/index.html dist",
+    "copy:js": "copyfiles --up src/**/*.js dist",
+    "publish": "gh-pages -d dist -m \"Prepare for publishing\" -s \"*.html\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,7 +30,10 @@
   },
   "homepage": "https://github.com/pwcberry/lottery-number-generator#readme",
   "devDependencies": {
+    "copyfiles": "^2.3.0",
+    "eslint": "^7.5.0",
     "gh-pages": "^3.1.0",
-    "node-sass": "^4.14.1"
+    "node-sass": "^4.14.1",
+    "rimraf": "^3.0.2"
   }
 }
