@@ -8,9 +8,8 @@
 <body>
 <h1>Lottery Number Generator</h1>
 <div id="App">
-    <p>{{message}}</p>
-    <p><label><input type="checkbox" v-model="seen"/>&nbsp;Click to see...</label></p>
-    <p v-if="seen" style="background-color: maroon; color: gold; font-weight: bold">He he he he</p>
+    <number-pool v-bind:min="1" v-bind:max="45" v-bind:limit="6" v-bind:selected="numberPool"></number-pool>
+    <p>{{numberPool}}</p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="module" src="index.js"></script>

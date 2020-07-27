@@ -1,0 +1,12 @@
+.number-pool {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+}
+
+.number-pool__ball {
+  &.is-selected {
+    color: magenta;
+  }
+}

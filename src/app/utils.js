@@ -1,3 +1,6 @@
-export function add2(n) {
-    return n + 2;
+export function* range(min, max) {
+    while (min <= max) {
+        yield min;
+        min += 1;
+    }
 }

@@ -1,13 +1,8 @@
-import { App } from "./app/index.js";
+import "./app/component/NumberPool.js";
 
-const app = new Vue({
+new Vue({
     el: "#App",
     data: {
-        message: `G'day mate! Its: ${new Date().toLocaleString()}`,
-        seen: false
+        numberPool: []
     }
 });
-
-App();
-
-console.log("Hello world");
