@@ -1,6 +1,6 @@
 import { range } from "../utils.js";
 
-Vue.component("NumberPool", {
+export default Vue.component("NumberPool", {
     props:{
         min: Number,
         max: Number,
