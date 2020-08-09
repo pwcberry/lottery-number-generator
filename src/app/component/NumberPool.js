@@ -23,10 +23,19 @@ export default Vue.component("NumberPool", {
               target.parentElement.classList.add("is-selected");
               this.selected.push(target.value);
               this.count += 1;
+              if (this.count === this.minCount) {
+                  this.$emit("reached-minimum-count");
+              }
           } else {
               target.parentElement.classList.remove("is-selected");
               const i = this.selected.findIndex(x => x === target.value);
               this.selected.splice(i, 1);
+
+              // We only want to fire this event specifically when the count is about to fall below the threshold
+              if (this.count === this.minCount) {
+                  this.$emit("below-minimum-count");
+              }
+
               this.count -= 1;
           }
       }
