@@ -2,9 +2,9 @@ import { range } from "../utils.js";
 
 export default Vue.component("NumberPool", {
     props:{
-        min: Number,
-        max: Number,
-        limit: Number,
+        lowest: Number,
+        highest: Number,
+        minCount: Number,
         selected: Array
     },
     data() {
@@ -14,20 +14,15 @@ export default Vue.component("NumberPool", {
     },
     computed: {
        numbers() {
-           return Array.from(range(this.min, this.max));
+           return Array.from(range(this.lowest, this.highest));
        }
     },
     methods: {
       onSelect({ target } ) {
           if (target.checked) {
-              if (this.count === this.limit) {
-                  target.checked = false;
-                  return false;
-              } else {
-                  target.parentElement.classList.add("is-selected");
-                  this.selected.push(target.value);
-                  this.count += 1;
-              }
+              target.parentElement.classList.add("is-selected");
+              this.selected.push(target.value);
+              this.count += 1;
           } else {
               target.parentElement.classList.remove("is-selected");
               const i = this.selected.findIndex(x => x === target.value);

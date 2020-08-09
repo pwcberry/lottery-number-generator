@@ -4,7 +4,8 @@ import { range } from "./app/utils.js";
 new Vue({
     el: "#App",
     data: {
-        maximumBallNumber: 36,
+        ballsPerGame: 6,
+        highestBallNumber: 36,
         ballNumbers: Array.from(range(35, 50)),
         numberPool: []
     }

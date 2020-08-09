@@ -9,15 +9,15 @@ describe("<number-pool>", () => {
     });
 
     it("should render 36 balls", () => {
-        const { container } = render(NumberPool, { props: { min: 1, max: 36 } });
+        const { container } = render(NumberPool, { props: {lowest: 1, highest: 36 } });
         const balls = Array.from(container.querySelectorAll(".number-pool__ball"));
         expect(balls).toHaveLength(36);
     });
 
     it("should update the ball count from 36 to 45", async () => {
-        const { container, updateProps } = render(NumberPool, { props: { min: 1, max: 36 } });
+        const { container, updateProps } = render(NumberPool, { props: {lowest: 1, highest: 36 } });
 
-        await updateProps({ max: 45 });
+        await updateProps({ highest: 45 });
 
         const balls = Array.from(container.querySelectorAll(".number-pool__ball"));
         expect(balls).toHaveLength(45);
@@ -26,7 +26,7 @@ describe("<number-pool>", () => {
     it("should update the \"selected\" prop", () => {
         const selected = [];
 
-        const { container } = render(NumberPool, { props: { min: 1, max: 36, selected } });
+        const { container } = render(NumberPool, { props: {lowest: 1, highest: 36, selected } });
 
         const balls = Array.from(container.querySelectorAll(".number-pool__ball"));
 
