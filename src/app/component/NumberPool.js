@@ -1,12 +1,21 @@
 import { range } from "../utils.js";
 
 Vue.component("NumberPool", {
-    props: ["min", "max", "selected", "limit"],
+    props:{
+        min: Number,
+        max: Number,
+        limit: Number,
+        selected: Array
+    },
     data() {
         return {
-            numbers: Array.from(range(this.min, this.max)),
             count: 0
         }
+    },
+    computed: {
+       numbers() {
+           return Array.from(range(this.min, this.max));
+       }
     },
     methods: {
       onSelect({ target } ) {
@@ -29,7 +38,7 @@ Vue.component("NumberPool", {
     },
     template: `
         <div class="number-pool">
-            <label v-for="n in numbers" v-bind:key="n" class="number-pool__ball">
+            <label v-for="n in numbers" :key="n" class="number-pool__ball">
                 <input type="checkbox" v-bind:value="n" v-on:change="onSelect" />
                 {{n}}
             </label>

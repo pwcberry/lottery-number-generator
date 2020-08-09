@@ -7,13 +7,13 @@ const DIST_DIR = path.resolve(__dirname, "../dist");
 function checkDistDir() {
     if (!fs.existsSync(DIST_DIR)) {
         console.log("Creating \"dist\"...");
-        fs.mkdirSync(DIST_DIR);
+        fs.mkdirSync(DIST_DIR, { recursive: true });
     }
 }
 
 function checkDir(path) {
     if (!fs.existsSync(path)) {
-        fs.mkdirSync(path);
+        fs.mkdirSync(path, { recursive: true });
     }
 }
 
