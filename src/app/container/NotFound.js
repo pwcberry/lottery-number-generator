@@ -1,3 +1,3 @@
 export default Vue.component("NotFound", {
-    template: `<h1>Not found</h1>`
+    template: "<h1>Not found</h1>"
 });

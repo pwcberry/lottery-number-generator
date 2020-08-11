@@ -13,7 +13,7 @@ describe("<number-pool>", () => {
 
     it("should render", () => {
         const { container } = render(NumberPool);
-        expect(container.firstElementChild.tagName).toBe('DIV');
+        expect(container.firstElementChild.tagName).toBe("DIV");
         expect(container.firstElementChild.classList.contains("number-pool")).toBe(true);
     });
 

@@ -4,8 +4,9 @@
     "sourceType": "module"
   },
   "globals": {
+    "BigInt": true,
     "Vue": true,
-    "BigInt": true
+    "VueRouter": true
   },
   "env": {
     "es6": true,
@@ -13,5 +14,8 @@
     "node": true,
     "jest": true
   },
-  "extends": "eslint:recommended"
+  "extends": "eslint:recommended",
+  "rules": {
+    "quotes": ["error", "double"]
+  }
 }

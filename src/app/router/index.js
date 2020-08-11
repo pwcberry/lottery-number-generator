@@ -4,7 +4,7 @@ import Setup from "../container/Setup.js";
 
 const routes = [
     {
-        path: '/',
+        path: "/",
         redirect: "/setup"
     },
     {
