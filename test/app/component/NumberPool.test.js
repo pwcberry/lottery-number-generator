@@ -32,10 +32,8 @@ describe("<number-pool>", () => {
         expect(balls).toHaveLength(45);
     });
 
-    it("should update the \"selected\" prop", async () => {
-        const selected = [];
-
-        const { container } = renderComponent(selected);
+    it("should raise the \"updated-selected\" event", async () => {
+        const { container, emitted } = renderComponent([]);
 
         const balls = Array.from(container.querySelectorAll(".number-pool__ball"));
 
@@ -43,7 +41,32 @@ describe("<number-pool>", () => {
         await fireEvent.click(balls[11]);
         await fireEvent.click(balls[21]);
 
-        expect(selected).toStrictEqual(["8", "12", "22"]);
+        expect(emitted()).toHaveProperty("updated-selected");
+
+        // Expect event to be emitted 3 times
+        expect(emitted()["updated-selected"]).toHaveLength(3);
+
+        // Event value is wrapped in an array
+        // See: https://vue-test-utils.vuejs.org/api/wrapper/#emitted
+        expect(emitted()["updated-selected"][2]).toEqual([[8, 12, 22]]);
+    });
+
+    it("should add to existing state of selected numbers", async () => {
+        const { container, emitted } = renderComponent([25, 31]);
+        const balls = Array.from(container.querySelectorAll(".number-pool__ball"));
+
+        await fireEvent.click(balls[7]);
+        await fireEvent.click(balls[11]);
+        await fireEvent.click(balls[21]);
+
+        const emittedEvents = emitted()["updated-selected"];
+        expect(emittedEvents).toHaveLength(3);
+
+        const lastEventData = emittedEvents[2].flat();
+        expect(lastEventData).toHaveLength(5);
+        expect(lastEventData[2]).toBe(8);
+        expect(lastEventData[1]).toBe(31);
+        expect(lastEventData[4]).toBe(22);
     });
 
     it("should raise the \"reached-minimum-count\" event", async () => {
@@ -59,7 +82,7 @@ describe("<number-pool>", () => {
     });
 
     it("should raise the \"below-minimum-count\" event", async () => {
-        const { container, emitted } =  renderComponent([], 3);
+        const { container, emitted } = renderComponent([], 3);
 
         const balls = Array.from(container.querySelectorAll(".number-pool__ball"));
 

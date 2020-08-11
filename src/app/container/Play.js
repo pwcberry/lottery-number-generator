@@ -1,5 +1,10 @@
 import "../component/Nav.js";
 
 export default Vue.component("Play", {
-    template: "<div><lottery-nav></lottery-nav><h1>Play</h1></div>"
+    data() {
+        return {
+            ...this.$root.$data.state,
+        };
+    },
+    template: "<div><lottery-nav></lottery-nav><h1>Play</h1><p>{{numberPool}}</p></div>"
 });

@@ -3,20 +3,17 @@ import "../component/NumberPool.js";
 import { range } from "../utils.js";
 
 export default Vue.component("Setup", {
-    props: {
-        ballsPerGame: Number,
-        numberPool: Array
-    },
     data() {
         return {
+            ...this.$root.$data.state,
             highestBallNumber: 36,
             ballNumbers: Array.from(range(35, 50)),
         };
     },
-    computed: {
-      selectedNumbers() {
-          return [];
-      }
+    methods: {
+        updateSelected(selectedNumbers) {
+            this.$root.dispatch("UPDATE_NUMBER_POOL", selectedNumbers);
+        }
     },
     template: `
       <div>
@@ -30,7 +27,8 @@ export default Vue.component("Setup", {
             v-bind:lowest="1"
             v-bind:highest="highestBallNumber"
             v-bind:minCount="ballsPerGame"
-            v-bind:selected="selectedNumbers"
+            v-bind:selected="numberPool"
+            v-on:updated-selected="updateSelected"
         ></number-pool>
       </article>
       </div>`

@@ -1,5 +1,23 @@
 import routes from "./router/index.js";
-import { range } from "./utils.js";
+
+const store = {
+    state: {
+        ballsPerGame: 6,
+        numberPool: []
+    },
+    dispatch(action, value) {
+        switch(action) {
+        case "UPDATE_BALLS_PER_GAME":
+            this.state.ballsPerGame = value;
+            break;
+        case "UPDATE_NUMBER_POOL`":
+            this.state.numberPool = value;
+            break;
+        }
+    }
+};
+
+Vue.use(VueRouter);
 
 const router = new VueRouter({
     routes
@@ -8,9 +26,11 @@ const router = new VueRouter({
 new Vue({
     router,
     data: {
-        ballsPerGame: 6,
-        highestBallNumber: 36,
-        ballNumbers: Array.from(range(35, 50)),
-        numberPool: []
+        state: store.state
+    },
+    methods: {
+        dispatch(action, value) {
+            store.dispatch(action,value);
+        }
     }
 }).$mount("#App");
