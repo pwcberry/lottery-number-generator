@@ -8,18 +8,10 @@
 <body>
 <h1>Lottery Number Generator</h1>
 <div id="App">
-    <p><label>Maximum number of balls:&nbsp;<select v-model="highestBallNumber">
-        <option v-for="n in ballNumbers" :key="n" v-bind:value="n">{{n}}</option>
-    </select></label></p>
-    <number-pool
-            v-bind:minCount="ballsPerGame"
-            v-bind:highest="highestBallNumber"
-            v-bind:lowest="1"
-            v-bind:selected="numberPool"
-    ></number-pool>
-    <p>{{ numberPool }}</p>
+    <router-view></router-view>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script type="module" src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-router@3.4.2/dist/vue-router.min.js"></script>
+<script type="module" src="app/index.js"></script>
 </body>
 </html>
