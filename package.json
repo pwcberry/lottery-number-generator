@@ -2,7 +2,7 @@
   "name": "lottery-number-generator",
   "version": "0.0.1",
   "description": "Generate a sequence of lottery games from a select set of numbers.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "build": "npm run clean && concurrently \"npm:copy\" \"npm:styles\"",
     "dev": "npm run clean && concurrently \"npm:html:watch\" \"npm:js:watch\" \"npm:styles:watch\" \"npm:start\"",
@@ -13,7 +13,7 @@
     "js:watch": "nodemon --watch src --ext js scripts/copy.js",
     "lint": "npx eslint --ext js src scripts test",
     "lint:fix": "npx eslint --ext js --fix src scripts test",
-    "publish": "gh-pages -d dist -m \"Publishing\"",
+    "publish": "node scripts/publish.js",
     "styles": "node scripts/styles.js",
     "styles:watch": "nodemon --watch src/styles --watch src/styles/components --ext scss scripts/styles.js",
     "test": "jest"
@@ -50,6 +50,7 @@
     "concurrently": "^5.2.0",
     "jest": "^26.1.0",
     "nodemon": "^2.0.4",
+    "prettier": "^2.3.2",
     "vue": "^2.6.11",
     "vue-router": "^3.4.2",
     "vue-template-compiler": "^2.6.11"
