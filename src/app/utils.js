@@ -37,6 +37,7 @@ export function generateGames(setOfNumbers, maxGames = 12, maxPicksPerGame = 6) 
 
         const gameHash = hash(gamePicks);
         if (!pool.has(gameHash)) {
+            gamePicks.sort((a, b) => a - b);
             pool.set(gameHash, gamePicks);
             gameCounter -= 1;
         }
